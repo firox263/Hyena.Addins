@@ -1826,10 +1826,12 @@ namespace Mono.Addins.Database
 //			if (Util.IsMono)
 //				return new SetupProcess ();
 //			else
-			if (fs.RequiresIsolation)
-				return new SetupDomain ();
-			else
-				return new SetupLocal ();
+			// if (fs.RequiresIsolation)
+				// return new SetupDomain ();
+			// else
+			// TODO(firox263): Temp hack to get Mono.Addins building
+			// on netstandard2.1
+			return new SetupLocal ();
 		}
 		
 		public void ResetConfiguration ()
