@@ -1,30 +1,48 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{5F813963-DE40-433A-ABE3-71EACDF19412}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{E116BB2B-6A42-40C2-A143-31163DDA5F3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldAddin", "HelloWorldAddin\HelloWorldAddin.csproj", "{26C85FBC-0A97-4650-807F-E889C6D1F32F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldAddin", "HelloWorldAddin\HelloWorldAddin.csproj", "{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{26C85FBC-0A97-4650-807F-E889C6D1F32F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{26C85FBC-0A97-4650-807F-E889C6D1F32F}.Debug|x86.Build.0 = Debug|Any CPU
-		{26C85FBC-0A97-4650-807F-E889C6D1F32F}.Release|x86.ActiveCfg = Release|Any CPU
-		{26C85FBC-0A97-4650-807F-E889C6D1F32F}.Release|x86.Build.0 = Release|Any CPU
-		{5F813963-DE40-433A-ABE3-71EACDF19412}.Debug|x86.ActiveCfg = Debug|x86
-		{5F813963-DE40-433A-ABE3-71EACDF19412}.Debug|x86.Build.0 = Debug|x86
-		{5F813963-DE40-433A-ABE3-71EACDF19412}.Release|x86.ActiveCfg = Release|x86
-		{5F813963-DE40-433A-ABE3-71EACDF19412}.Release|x86.Build.0 = Release|x86
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = HelloWorld\HelloWorld.csproj
-		Policies = $0
-		$0.ChangeLogPolicy = $1
-		$1.UpdateMode = None
-		$1.inheritsSet = Mono
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Debug|x64.Build.0 = Debug|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Debug|x86.Build.0 = Debug|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Release|x64.ActiveCfg = Release|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Release|x64.Build.0 = Release|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Release|x86.ActiveCfg = Release|Any CPU
+		{E116BB2B-6A42-40C2-A143-31163DDA5F3A}.Release|x86.Build.0 = Release|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Release|x64.Build.0 = Release|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2B04300-6BCE-457D-A11D-9EF880A3AC9E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

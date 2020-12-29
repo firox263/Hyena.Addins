@@ -3,7 +3,7 @@
 
 # Build stuff
 obj
-/bin
+bin
 *policy*config
 *.pc
 *.dll
@@ -17,6 +17,7 @@ packages
 *.userprefs
 *.usertasks
 *.sln.cache
+*.idea
 /.vs
 
 # Generated stuff

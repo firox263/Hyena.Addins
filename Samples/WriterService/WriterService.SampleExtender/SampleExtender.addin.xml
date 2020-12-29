@@ -1,7 +1,7 @@
 <Addin>
 
 	<Runtime>
-		<Import assembly="SampleExtender.dll"/>
+		<Import assembly="WriterService.SampleExtender.dll"/>
 	</Runtime>
 	
 	<Dependencies>

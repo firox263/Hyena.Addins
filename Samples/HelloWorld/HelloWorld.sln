@@ -1,32 +1,48 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{409DA1E7-DC6D-4B00-858F-0ABF1593AE3C}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{376EF31D-538D-4972-8639-7F40A265D9E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldAddin", "HelloWorldAddin\HelloWorldAddin.csproj", "{64A8A62E-133F-4CDB-B174-4B36E0827099}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldAddin", "HelloWorldAddin\HelloWorldAddin.csproj", "{12D1973A-738C-4062-A270-1E6B9327F200}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{409DA1E7-DC6D-4B00-858F-0ABF1593AE3C}.Debug|x86.ActiveCfg = Debug|x86
-		{409DA1E7-DC6D-4B00-858F-0ABF1593AE3C}.Debug|x86.Build.0 = Debug|x86
-		{409DA1E7-DC6D-4B00-858F-0ABF1593AE3C}.Release|x86.ActiveCfg = Release|x86
-		{409DA1E7-DC6D-4B00-858F-0ABF1593AE3C}.Release|x86.Build.0 = Release|x86
-		{64A8A62E-133F-4CDB-B174-4B36E0827099}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{64A8A62E-133F-4CDB-B174-4B36E0827099}.Debug|x86.Build.0 = Debug|Any CPU
-		{64A8A62E-133F-4CDB-B174-4B36E0827099}.Release|x86.ActiveCfg = Release|Any CPU
-		{64A8A62E-133F-4CDB-B174-4B36E0827099}.Release|x86.Build.0 = Release|Any CPU
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = HelloWorld\HelloWorld.csproj
-		Policies = $0
-		$0.ChangeLogPolicy = $1
-		$1.UpdateMode = None
-		$1.inheritsSet = Mono
-		$0.VersionControlPolicy = $2
-		$2.inheritsSet = Mono
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Debug|x64.Build.0 = Debug|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Debug|x86.Build.0 = Debug|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Release|x64.ActiveCfg = Release|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Release|x64.Build.0 = Release|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Release|x86.ActiveCfg = Release|Any CPU
+		{376EF31D-538D-4972-8639-7F40A265D9E9}.Release|x86.Build.0 = Release|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Debug|x64.Build.0 = Debug|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Debug|x86.Build.0 = Debug|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Release|x64.ActiveCfg = Release|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Release|x64.Build.0 = Release|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Release|x86.ActiveCfg = Release|Any CPU
+		{12D1973A-738C-4062-A270-1E6B9327F200}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
