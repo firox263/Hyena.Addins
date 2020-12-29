@@ -31,12 +31,13 @@ using System;
 using System.Text;
 using System.Collections;
 using Mono.Addins.Description;
+using System.Collections.Generic;
 
 namespace Mono.Addins
 {
 	class TreeNode
 	{
-		ArrayList childrenList;
+		List<TreeNode> childrenList;
 		TreeNodeCollection children;
 		ExtensionNode extensionNode;
 		bool childrenLoaded;
@@ -133,7 +134,7 @@ namespace Mono.Addins
 		{
 			node.parent = this;
 			if (childrenList == null)
-				childrenList = new ArrayList ();
+				childrenList = new List<TreeNode> ();
 			childrenList.Add (node);
 		}
 		
@@ -141,7 +142,7 @@ namespace Mono.Addins
 		{
 			node.parent = this;
 			if (childrenList == null)
-				childrenList = new ArrayList ();
+				childrenList = new List<TreeNode> ();
 			childrenList.Insert (n, node);
 			
 			// Dont call NotifyChildrenChanged here. It is called by ExtensionTree,
@@ -270,7 +271,7 @@ namespace Mono.Addins
 			return null;
 		}
 		
-		public void FindAddinNodes (string id, ArrayList nodes)
+		public void FindAddinNodes (string id, List<TreeNode> nodes)
 		{
 			if (id != null && extensionPoint != null && extensionPoint.RootAddin == id) {
 				// It is an extension point created by the add-in. All nodes below this
@@ -294,7 +295,7 @@ namespace Mono.Addins
 				foreach (ExtensionNodeType nt in extensionPoint.NodeSet.NodeTypes) {
 					if (nt.ObjectTypeName.Length > 0 && (nodeName.Length == 0 || nodeName == nt.Id)) {
 						RuntimeAddin addin = addinEngine.GetAddin (extensionPoint.RootAddin);
-						Type ot = addin.GetType (nt.ObjectTypeName);
+						Type ot = addin.GetType (nt.ObjectTypeName, true);
 						if (ot != null) {
 							if (ot.IsAssignableFrom (type)) {
 								path = extensionPoint.Path;

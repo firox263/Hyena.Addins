@@ -33,6 +33,7 @@ using System.Reflection;
 using System.Xml;
 using Mono.Addins.Description;
 using System.Collections.Generic;
+using Mono.Addins.Database;
 
 namespace Mono.Addins
 {
@@ -52,7 +53,7 @@ namespace Mono.Addins
 		}
 
 		
-		public void LoadExtension (string addin, Extension extension, ArrayList addedNodes)
+		public void LoadExtension (string addin, Extension extension, List<TreeNode> addedNodes)
 		{
 			TreeNode tnode = GetNode (extension.Path);
 			if (tnode == null) {
@@ -64,7 +65,7 @@ namespace Mono.Addins
 			LoadExtensionElement (tnode, addin, extension.ExtensionNodes, (ModuleDescription) extension.Parent, ref curPos, tnode.Condition, false, addedNodes);
 		}
 
-		void LoadExtensionElement (TreeNode tnode, string addin, ExtensionNodeDescriptionCollection extension, ModuleDescription module, ref int curPos, BaseCondition parentCondition, bool inComplextCondition, ArrayList addedNodes)
+		void LoadExtensionElement (TreeNode tnode, string addin, ExtensionNodeDescriptionCollection extension, ModuleDescription module, ref int curPos, BaseCondition parentCondition, bool inComplextCondition, List<TreeNode> addedNodes)
 		{
 			foreach (ExtensionNodeDescription elem in extension) {
 					
@@ -152,20 +153,20 @@ namespace Mono.Addins
 		BaseCondition ReadComplexCondition (ExtensionNodeDescription elem, BaseCondition parentCondition)
 		{
 			if (elem.NodeName == "Or" || elem.NodeName == "And" || elem.NodeName == "Not") {
-				ArrayList conds = new ArrayList ();
+				var conds = new List<BaseCondition> ();
 				foreach (ExtensionNodeDescription celem in elem.ChildNodes) {
 					conds.Add (ReadComplexCondition (celem, null));
 				}
 				if (elem.NodeName == "Or")
-					return new OrCondition ((BaseCondition[]) conds.ToArray (typeof(BaseCondition)), parentCondition);
+					return new OrCondition (conds.ToArray (), parentCondition);
 				else if (elem.NodeName == "And")
-					return new AndCondition ((BaseCondition[]) conds.ToArray (typeof(BaseCondition)), parentCondition);
+					return new AndCondition (conds.ToArray (), parentCondition);
 				else {
 					if (conds.Count != 1) {
 						addinEngine.ReportError ("Invalid complex condition element '" + elem.NodeName + "'. 'Not' condition can only have one parameter.", null, null, false);
 						return new NullCondition ();
 					}
-					return new NotCondition ((BaseCondition) conds [0], parentCondition);
+					return new NotCondition (conds [0], parentCondition);
 				}
 			}
 			if (elem.NodeName == "Condition") {
@@ -217,7 +218,7 @@ namespace Mono.Addins
 			}
 			
 			// If no type name is provided, use TypeExtensionNode by default
-			if (ntype.TypeName == null || ntype.TypeName.Length == 0 || ntype.TypeName == typeof(TypeExtensionNode).FullName) {
+			if (ntype.TypeName == null || ntype.TypeName.Length == 0 || ntype.TypeName == typeof(TypeExtensionNode).AssemblyQualifiedName) {
 				// If it has a custom attribute, use the generic version of TypeExtensionNode
 				if (ntype.ExtensionAttributeTypeName.Length > 0) {
 					Type attType = p.GetType (ntype.ExtensionAttributeTypeName, false);
@@ -225,7 +226,7 @@ namespace Mono.Addins
 						addinEngine.ReportError ("Custom attribute type '" + ntype.ExtensionAttributeTypeName + "' not found.", ntype.AddinId, null, false);
 						return false;
 					}
-					if (ntype.ObjectTypeName.Length > 0 || ntype.TypeName == typeof(TypeExtensionNode).FullName)
+					if (ntype.ObjectTypeName.Length > 0 || ntype.TypeName == typeof(TypeExtensionNode).AssemblyQualifiedName)
 						ntype.Type = typeof(TypeExtensionNode<>).MakeGenericType (attType);
 					else
 						ntype.Type = typeof(ExtensionNode<>).MakeGenericType (attType);
@@ -255,9 +256,10 @@ namespace Mono.Addins
 			if (boundAttributeType != null) {
 				if (ntype.ExtensionAttributeTypeName.Length == 0)
 					throw new InvalidOperationException ("Extension node not bound to a custom attribute.");
-				if (ntype.ExtensionAttributeTypeName != boundAttributeType.MemberType.FullName)
-					throw new InvalidOperationException ("Incorrect custom attribute type declaration in " + ntype.Type + ". Expected '" + ntype.ExtensionAttributeTypeName + "' found '" + boundAttributeType.MemberType.FullName + "'");
-				
+
+				if (!Util.TryParseTypeName (ntype.ExtensionAttributeTypeName, out var type, out _) || type != boundAttributeType.MemberType.FullName)
+					throw new InvalidOperationException ("Incorrect custom attribute type declaration in " + ntype.Type + ". Expected '" + ntype.ExtensionAttributeTypeName + "' found '" + boundAttributeType.MemberType.AssemblyQualifiedName + "'");
+
 				fields = GetMembersMap (boundAttributeType.MemberType, out boundAttributeType);
 				if (fields.Count > 0)
 					ntype.CustomAttributeFields = fields;

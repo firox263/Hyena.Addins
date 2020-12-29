@@ -36,6 +36,7 @@ using Mono.Addins.Setup;
 using System.IO;
 using Mono.Addins.Description;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Mono.Addins.Setup
 {
@@ -327,10 +328,7 @@ namespace Mono.Addins.Setup
 			foreach (Addin addin in list) {
 				if (!showAll && IsHidden (addin))
 					continue;
-				Console.Write (" - " + addin.Name + " " + addin.Version);
-				if (showAll)
-					Console.Write (" (" + addin.AddinFile + ")");
-				Console.WriteLine ();
+				Console.WriteLine("[{0}] {1} {2} {3}", addin.Enabled ? "Enabled" : "Disabled", addin.Id, addin.Name, showAll ? $"({addin.AddinFile})": string.Empty);
 			}
 		}
 		
@@ -356,8 +354,8 @@ namespace Mono.Addins.Setup
 			AddinRepositoryEntry[] addins = service.Repositories.GetAvailableAddins ();
 			bool found = false;
 			foreach (PackageRepositoryEntry addin in addins) {
-				Addin sinfo = registry.GetAddin (addin.Addin.Id);
-				if (!showAll && IsHidden (sinfo))
+				Addin sinfo = registry.GetAddin (addin.Addin.LocalId);
+				if (sinfo != null && !showAll && IsHidden(sinfo))
 					continue;
 				if (sinfo != null && Addin.CompareVersions (sinfo.Version, addin.Addin.Version) == 1) {
 					Console.WriteLine (" - " + addin.Addin.Id + " " + addin.Addin.Version + " (" + addin.Repository.Name + ")");
@@ -378,8 +376,8 @@ namespace Mono.Addins.Setup
 			PackageCollection packs = new PackageCollection ();
 			AddinRepositoryEntry[] addins = service.Repositories.GetAvailableAddins ();
 			foreach (PackageRepositoryEntry addin in addins) {
-				Addin sinfo = registry.GetAddin (addin.Addin.Id);
-				if (!showAll && IsHidden (sinfo))
+				Addin sinfo = registry.GetAddin (addin.Addin.LocalId);
+                if (sinfo != null && !showAll && IsHidden(sinfo))
 					continue;
 				if (sinfo != null && Addin.CompareVersions (sinfo.Version, addin.Addin.Version) == 1)
 					packs.Add (AddinPackage.FromRepository (addin));
@@ -393,6 +391,24 @@ namespace Mono.Addins.Setup
 		void UpdateAvailableAddins (string[] args)
 		{
 			service.Repositories.UpdateAllRepositories (new ConsoleProgressStatus (verbose));
+		}
+
+		void EnableAddins (string[] args)
+		{
+			var addins = args.Where(a => a != "-y");
+			foreach (string addinId in addins)
+			{
+				registry.EnableAddin (addinId);
+			}
+		}
+
+		void DisableAddins(string[] args)
+		{
+			var addins = args.Where(a => a != "-y");
+			foreach (string addinId in addins)
+			{
+				registry.DisableAddin(addinId);
+			}
 		}
 		
 		void AddRepository (string[] args)
@@ -798,7 +814,7 @@ namespace Mono.Addins.Setup
 			if (ep.Description.Length > 0)
 				Console.WriteLine (ep.Description);
 			
-			ArrayList list = new ArrayList ();
+			var list = new List<ExtensionNodeType> ();
 			Hashtable visited = new Hashtable ();
 			
 			Console.WriteLine ();
@@ -834,7 +850,7 @@ namespace Mono.Addins.Setup
 				
 				if (nt.NodeTypes.Count > 0 || nt.NodeSets.Count > 0) {
 					Console.WriteLine (nsind + "Child nodes:");
-					ArrayList newList = new ArrayList ();
+					var newList = new List<ExtensionNodeType> ();
 					GetNodes (desc, nt, newList, new Hashtable ());
 					list.AddRange (newList);
 					foreach (ExtensionNodeType cnt in newList)
@@ -844,7 +860,7 @@ namespace Mono.Addins.Setup
 			Console.WriteLine ();
 		}
 		
-		void GetNodes (AddinDescription desc, ExtensionNodeSet nset, ArrayList list, Hashtable visited)
+		void GetNodes (AddinDescription desc, ExtensionNodeSet nset, List<ExtensionNodeType> list, Hashtable visited)
 		{
 			if (visited.Contains (nset))
 				return;
@@ -1056,6 +1072,18 @@ namespace Mono.Addins.Setup
 			cmd.Description = "Lists available add-in updates.";
 			cmd.AppendDesc ("Prints a list of available add-in updates in the registered repositories.");
 			commands.Add (cmd);
+
+			cmd = new SetupCommand(cat, "enable", "e", new SetupCommandHandler (EnableAddins));
+			cmd.Description = "Enables addins.";
+			cmd.Usage = "<id> ...";
+			cmd.AppendDesc("Enables an add-in which has been disabled");
+			commands.Add(cmd);
+
+			cmd = new SetupCommand(cat, "disable", "d", new SetupCommandHandler(DisableAddins));
+			cmd.Description = "Disables addins.";
+			cmd.Usage = "<id> ...";
+			cmd.AppendDesc("Disables an add-in which has been enabled");
+			commands.Add(cmd);
 			
 			cat = "Repository Commands";
 
@@ -1233,4 +1261,3 @@ namespace Mono.Addins.Setup
 	/// </summary>
 	public delegate void SetupCommandHandler (string[] args);
 }
-
