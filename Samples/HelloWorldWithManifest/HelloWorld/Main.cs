@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 
 using System;
-using Mono.Addins;
+using Hyena.Addins;
 
 namespace HelloWorld
 {

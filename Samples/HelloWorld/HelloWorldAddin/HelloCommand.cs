@@ -26,7 +26,7 @@
 
 using System;
 using HelloWorld;
-using Mono.Addins;
+using Hyena.Addins;
 
 // Declares that this assembly is an add-in
 [assembly:Addin]

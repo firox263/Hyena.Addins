@@ -11,7 +11,7 @@ namespace mautil
 		public static int Main(string[] args)
 		{
 			if (args.Length == 0 || args [0] == "--help" || args [0] == "help") {
-				Console.WriteLine ("Mono.Addins Setup Utility");
+				Console.WriteLine ("Hyena.Addins Setup Utility");
 				Console.WriteLine ("Usage: mautil [options] <command> [arguments]");
 				Console.WriteLine ();
 				Console.WriteLine ("Options:");

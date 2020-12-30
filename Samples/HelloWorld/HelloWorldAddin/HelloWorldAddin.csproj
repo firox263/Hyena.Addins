@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Hyena.Addins\Hyena.Addins.csproj" />
     <ProjectReference Include="..\HelloWorld\HelloWorld.csproj" />
-    <ProjectReference Include="..\..\..\Mono.Addins\Mono.Addins.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

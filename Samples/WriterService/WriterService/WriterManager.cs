@@ -1,6 +1,6 @@
 
 using System;
-using Mono.Addins;
+using Hyena.Addins;
 
 namespace WriterService
 {
