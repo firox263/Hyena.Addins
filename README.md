@@ -1,6 +1,9 @@
 # Hyena.Addins
 A port of mono-addins to .NET Standard 2.1
 
+The primary aim of this fork is to ease porting
+mono-addins based applications to modern .NET
+
 ## Status
 Only `Hyena.Addins` is supported at present. Other
 projects like Mono.Addins.Setup and the Gtk GUI
