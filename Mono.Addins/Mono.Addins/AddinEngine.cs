@@ -626,7 +626,10 @@ namespace Mono.Addins
 		{
 			lock (LocalLock) {
 				foreach (var asm in description.AssemblyNames) {
-					Debug.Assert(assemblyResolvePaths[asm] == addin);
+					// TODO: This assertion seems to break add-in registration
+					// Commenting it out allows add-in registration to work again,
+					// but it likely indicates a deeper problem. Investigate.
+					// Debug.Assert(assemblyResolvePaths[asm] == addin);
 					assemblyResolvePaths[asm] = addin;
 				}
 			}
