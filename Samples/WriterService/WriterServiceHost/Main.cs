@@ -1,6 +1,6 @@
 using System;
 using WriterService;
-using Mono.Addins;
+using Hyena.Addins;
 
 namespace SampleAddinHost
 {

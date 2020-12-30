@@ -24,7 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using Mono.Addins;
+using Hyena.Addins;
 
 // Specifies that this assembly is an add-in root,
 // which means that it can be extended by add-ins.

@@ -1,5 +1,5 @@
 ﻿# Samples
-This folder contains samples illustrating mono-addins in action.
+This folder contains samples illustrating hyena-addins in action.
 
 Note, the `Deprecated/` folder contains old samples which have
 not been updated to work with newer versions of .NET

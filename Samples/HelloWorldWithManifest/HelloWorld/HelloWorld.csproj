@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Mono.Addins\Mono.Addins.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <OutputType>Exe</OutputType>
@@ -14,6 +10,10 @@
     <EmbeddedResource Include="HelloWorld.addin.xml">
       <LogicalName>HelloWorld.addin.xml</LogicalName>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Hyena.Addins\Hyena.Addins.csproj" />
   </ItemGroup>
 
 </Project>

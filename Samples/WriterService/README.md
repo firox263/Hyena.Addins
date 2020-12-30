@@ -1,5 +1,5 @@
 ﻿# Writer Service Sample
-A more complex example of how mono-addins can be used.
+A more complex example of how hyena-addins can be used.
 
 ## Building
 To run this sample, first build the solution, then run the `WriterServiceHost`
