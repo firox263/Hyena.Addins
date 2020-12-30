@@ -1,5 +1,5 @@
 # Mono.Addins
-A port of mono-addins to netstandard2.1
+A port of mono-addins to .NET Standard 2.1
 
 ## Status
 Only `Mono.Addins` is supported at present. Other
